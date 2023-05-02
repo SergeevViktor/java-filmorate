@@ -1,4 +1,7 @@
 *.class
+mvnw
+mvnw.cmd
+.mvn
 *.DS_Store
 *.log
 *.jar
