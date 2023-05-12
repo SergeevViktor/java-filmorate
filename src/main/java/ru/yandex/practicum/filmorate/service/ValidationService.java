@@ -7,6 +7,7 @@ import ru.yandex.practicum.filmorate.model.User;
 import java.time.LocalDate;
 
 public class ValidationService {
+    //класс валидации
     private static final LocalDate date = LocalDate.of(1895, 12, 28);
 
     public static void validateUser(User user) {
@@ -29,7 +30,6 @@ public class ValidationService {
             user.setName(user.getLogin());
         }
     }
-
 
     public static void validateFilm(Film film) {
 
