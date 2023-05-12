@@ -2,7 +2,7 @@ package ru.yandex.practicum.filmorate.storage.user;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
-import ru.yandex.practicum.filmorate.exceptions.ValidationException;
+import ru.yandex.practicum.filmorate.exceptions.ObjectNotFoundException;
 import ru.yandex.practicum.filmorate.model.User;
 
 import java.util.ArrayList;
@@ -22,46 +22,32 @@ public class InMemoryUserStorage implements UserStorage {
     }
 
     @Override
-    public List<User> getAll() {
+    public List<User> getListUser() {
         return new ArrayList<>(users.values());
     }
 
     @Override
-    public User createUser(User user) {
-        if (user.getName() == null || user.getName().isBlank()) {
-            user.setName(user.getLogin());
-            log.info("Для пользователя было измененно поле [name] на {}.", user.getLogin());
-        }
-        users.put(getNextId(), user);
-        user.setId(id);
-        return user;
+    public User addUser(User user) {
+        user.setId(getNextId());
+        return users.put(user.getId(), user);
     }
 
     @Override
-    public User updateUser(User user) {
-        if (users.containsKey(user.getId())) {
-            log.info("Данные пользователя обновлены.");
-            users.put(user.getId(), user);
-        } else {
-            log.warn("Пользователя с ID-{} не найдено.", user.getId());
-            throw new ValidationException("Пользователя с данным id не найдено.");
-        }
-        return user;
+    public User save(User user) {
+        return users.put(user.getId(), user);
     }
 
     @Override
-    public void deleteUser(User user) {
-        if (users.containsKey(user.getId())) {
-            log.info("Данные пользователя удалены.");
-            users.remove(user.getId());
-        } else {
-            log.warn("Пользователя с ID-{} не найдено.", user.getId());
-            throw new ValidationException("Пользователя с данным id не найдено.");
-        }
+    public void deleteAllUsers() {
+        users.clear();
     }
 
     @Override
-    public User getById(int id) {
+    public User getUserById(int id) {
+        if (!users.containsKey(id)) {
+            log.error("ERROR: ID-{} не найден!", id);
+            throw new ObjectNotFoundException(String.format("User's id %d doesn't found!", id));
+        }
         return users.get(id);
     }
 
