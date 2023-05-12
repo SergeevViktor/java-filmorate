@@ -8,9 +8,6 @@ import java.time.LocalDate;
 
 public class ValidationService {
     private static final LocalDate date = LocalDate.of(1895, 12, 28);
-    private ValidationService() {
-
-    }
 
     public static void validateUser(User user) {
         if (user.getEmail() == null || user.getEmail().isEmpty()) {
