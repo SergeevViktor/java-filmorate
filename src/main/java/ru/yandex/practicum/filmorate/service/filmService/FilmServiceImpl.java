@@ -80,16 +80,4 @@ public class FilmServiceImpl implements FilmService {
                 .collect(Collectors.toList());
 
     }
-
-    /*public List<Film> getMostLikedFilms(Integer count) {
-        List<Film> films = new ArrayList<>(getAllFilms());
-
-
-        log.info("Most popular films returned successfully");
-        return films.stream()
-                .sorted(this::compare)
-                .skip(0)
-                .limit(count)
-                .collect(Collectors.toList());
-    }*/
 }
