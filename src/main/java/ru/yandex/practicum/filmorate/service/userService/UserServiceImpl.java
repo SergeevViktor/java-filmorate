@@ -17,6 +17,7 @@ import static ru.yandex.practicum.filmorate.service.ValidationService.validateUs
 @Component
 public class UserServiceImpl implements UserService {
     private final UserStorage userStorage;
+
     @Autowired
     public UserServiceImpl(UserStorage userStorage) {
         this.userStorage = userStorage;
