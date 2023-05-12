@@ -7,8 +7,9 @@ import ru.yandex.practicum.filmorate.model.User;
 import java.time.LocalDate;
 
 public class ValidationService {
-    //класс валидации
+
     private static final LocalDate date = LocalDate.of(1895, 12, 28);
+
 
     public static void validateUser(User user) {
         if (user.getEmail() == null || user.getEmail().isEmpty()) {
@@ -31,6 +32,7 @@ public class ValidationService {
         }
     }
 
+
     public static void validateFilm(Film film) {
 
         if (film.getName() == null || film.getName().isEmpty()) {
@@ -46,4 +48,6 @@ public class ValidationService {
             throw new ValidationException("Продолжительность фильма должна быть положительной!");
         }
     }
+
+
 }
