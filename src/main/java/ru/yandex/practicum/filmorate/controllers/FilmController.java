@@ -19,7 +19,7 @@ public class FilmController {
     private final FilmService filmService;
 
     @GetMapping
-    public List<Film> getUsers() {
+    public List<Film> getFilms() {
         log.info("Получен GET-запрос - /films.");
         return filmService.getFilms();
     }
