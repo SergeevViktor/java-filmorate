@@ -7,6 +7,8 @@ import javax.validation.constraints.Past;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 public class User {
@@ -20,4 +22,17 @@ public class User {
     @Past
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate birthday;
+    private final Set<Integer> friends = new HashSet<>();
+
+    public Set<Integer> getFriends() {
+        return friends;
+    }
+
+    public void addFriend(Integer id) {
+        friends.add(id);
+    }
+
+    public void deleteFriend(Integer id) {
+        friends.remove(id);
+    }
 }
