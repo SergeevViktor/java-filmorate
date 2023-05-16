@@ -5,6 +5,7 @@ import ru.yandex.practicum.filmorate.model.Friendship;
 import java.util.List;
 
 public interface FriendshipStorage {
+
     Friendship added(Friendship friendship);
 
     Friendship update(Friendship friendship);
