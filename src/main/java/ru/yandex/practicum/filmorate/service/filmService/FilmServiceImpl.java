@@ -1,5 +1,6 @@
 package ru.yandex.practicum.filmorate.service.filmService;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -19,25 +20,13 @@ import static ru.yandex.practicum.filmorate.service.ValidationService.validateFi
 
 @Slf4j
 @Component
+@RequiredArgsConstructor
 public class FilmServiceImpl implements FilmService {
     private final FilmStorage filmStorage;
-    private final UserStorage userStorage;
     private final RatingMpaStorage ratingMpaStorage;
     private final GenreStorage genreStorage;
     private final LikesStorage likesStorage;
     private final FilmGenreStorage filmGenreStorage;
-
-    @Autowired
-    public FilmServiceImpl(FilmStorage filmStorage, UserStorage userStorage, RatingMpaStorage ratingMpaStorage,
-                           GenreStorage genreStorage, LikesStorage likesStorage,
-                           FilmGenreStorage filmGenreStorage) {
-        this.filmStorage = filmStorage;
-        this.userStorage = userStorage;
-        this.ratingMpaStorage = ratingMpaStorage;
-        this.genreStorage = genreStorage;
-        this.likesStorage = likesStorage;
-        this.filmGenreStorage = filmGenreStorage;
-    }
 
     @Override
     public Film createFilm(Film film) {
