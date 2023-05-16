@@ -2,6 +2,7 @@
 mvnw
 mvnw.cmd
 .mvn
+src/test
 *.DS_Store
 *.log
 *.jar
