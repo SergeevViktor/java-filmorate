@@ -4,13 +4,14 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Past;
+
+import lombok.Builder;
 import lombok.Data;
 
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
 
 @Data
+@Builder
 public class User {
 
     private int id;
@@ -22,17 +23,4 @@ public class User {
     @Past
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate birthday;
-    private final Set<Integer> friends = new HashSet<>();
-
-    public Set<Integer> getFriends() {
-        return friends;
-    }
-
-    public void addFriend(Integer id) {
-        friends.add(id);
-    }
-
-    public void deleteFriend(Integer id) {
-        friends.remove(id);
-    }
 }
