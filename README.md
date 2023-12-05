@@ -1,4 +1,6 @@
 # java-filmorate
+Приложение Filmorate по оценке фильмов.
+
 # Промежуточное ТЗ 11
 * Ссылка на схему БД: https://dbdiagram.io/d/6462598fdca9fb07c41de613
 
